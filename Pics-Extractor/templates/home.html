@@ -1,0 +1,207 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="http://fonts.cdnfonts.com/css/euclid-circular-a?styles=100037,100034,100036,100039,100031"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <title>Image Extractor</title>
+    <script>
+        setTimeout(function () {
+            const modal = document.getElementById("error-modal");
+            // hide modal after 3 seconds
+            modal.style.display = "none";
+        }, 3500);
+
+    </script>
+</head>
+<body style="background-color: #ab8872;">
+
+
+<header class="text-white-400 bg-black-900 body-font"
+    style="font-family: 'Euclid Circular A', sans-serif; background-color: #ab8872;">
+    <div class=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-black mb-4 md:mb-0">
+            <span class="ml-3 text-xl">Extract Pic</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="{% url 'home' %}" class="mr-5 hover:text-white hover:cursor-pointer">Home</a>
+            <a href="{% url 'help' %}" class="mr-5 hover:text-white hover:cursor-pointer">Help?</a>
+            <a href="https://github.com/ASACHIT/Pics-Extractor.git" target="_blank">
+                <button
+                    class="inline-flex items-center  py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0 mr-5 hover:text-white hover:cursor-pointer">Github
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<body style="font-family: 'Euclid Circular A', sans-serif;">
+
+    <!-- error popup modal -->
+    {% if messages %}
+    {% for msg in messages %}
+    <div id="error-modal" class="flex animate-pulse w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg
+       fixed left-8 top-8">
+        <div class="flex items-center justify-center w-12 stroke-slate-900">
+            <svg class="w-6 h-6 text-slate-800 fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
+            </svg>
+        </div>
+
+        <div class="px-4 py-2 -mx-3">
+            <div class="mx-3">
+                <span class="font-semibold text-slate-800 ">Error</span>
+                <p class="text-sm text-gray-600 ">{{msg}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- error popup modal -->
+
+    <style>
+        #thet
+        {
+            background-color: #ab8872;
+        }
+        #thet:hover
+        { background-color: #a06b4b;
+            
+        }
+        
+        
+    </style>
+    <section class="text-gray-400 body-font" style="background-color: #000000;">
+        <div class="dark-bg container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+            <div
+                class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">Image Extractor</h1>
+                <p class="mb-8 leading-relaxed">Extract all the images from any website and webpages</p>
+                <div class="flex w-full md:justify-start justify-center items-end">
+                    <form action="" method="post" class="flex w-full md:justify-start justify-center items-end">
+                        <div class="relative mr-4 md:w-full lg:w-full xl:w-1/2 w-2/4">
+                            {% csrf_token %}
+                            <label for="hero-field" class="leading-7 text-sm text-gray-400">Url of Website</label>
+                            <input type="text" id="hero-field" name="hero-field" placeholder="Eg: https://itsnp.org/"
+                                class="w-full bg-gray-800 rounded bg-opacity-40 border border-gray-700 focus:ring-2 focus:ring-green-900 focus:bg-transparent focus:border-green-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                        </div>
+                        <button type="submit" id="thet"
+                            class="inline-flex text-white  border-0 py-2 px-6 focus:outline-none rounded text-lg bg-gray-800 hover-bg-gray-200" >Extract</button>
+                    </form>
+                </div>
+                <p class="text-sm mt-2 text-gray-500 mb-8 w-full">simply scrapes all images from website</p>
+            </div>
+            <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                <img class="object-cover object-center rounded" alt="hero" src="/static/img.png">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- image container after iterating over image links   -->
+    <div class="px-10 pb-10 flex-1" style="background-color: #ab8872;">
+        <div
+            class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-6">
+            {% for image_url, file_name, file_format in ImagesAndFilenames %}
+            <div>
+                <div
+                    class="bg-white rounded-md shadow-green-100 h-full flex flex-col justify-between app-image relative transition-all duration-200 transform hover:-translate-y-2 hover:scale-105 hover:z-10 hover:shadow-xl focus-within:z-20">
+                    <div>
+                        <div class="w-full relative" style="padding-bottom: 100;">
+                            <div class="left-0 w-full h-full p-6 flex-1">
+                                <div class="rounded-md w-full h-full overflow-hidden bg-green-50">
+                                    <img src="{{ image_url }}" alt="" srcset=""
+                                        class="object-scale-down h-full w-full cursor-pointer">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-4 -mt-2">
+                            <div class="flex justify-between overflow-hidden">
+                                <div class="font-normal overflow-hidden">Name: {{ file_name }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-4 py-3 border-t border-gray-200 flex flex-wrap items-center justify-between">
+                        <div>
+                            <!-- OPEN IMAGE LINK BUTTON and ICON -->
+                            <a href="{{ image_url }}" class="button p-0 h-10 w-10 is-text" target="_blank">
+                                <button type="button" class="button p-0 h-10 w-10 is-text" id="down">
+                                    <span>
+                                        <div class="app-icon h-6 w-6">
+                                            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                width="24px" height="24px">
+                                                <path
+                                                    d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z" />
+                                            </svg>
+                                        </div>
+                                    </span>
+                                </button>
+                            </a>
+                            <!-- OPEN IMAGE LINK -->
+                            <button type="button" class="button p-0 h-10 w-10 is-text">
+                                <span>
+                                    <div class="app-icon h-6 w-6">
+                                    </div>
+                                </span>
+                            </button>
+                        </div>
+                        <div>
+                            <div
+                                class="dropdown dropdown-menu-animation is-bottom-left is-mobile-modal overflow-hidden w-9">
+                                <span class="bg-green-50 text-gray-600 p-1 rounded-md">{{ file_format }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- image container after iterating over image links   -->
+</body>
+
+<footer class="text-black-600 body-font" style="background-color: #ab8872;">
+    <div class="container px-5 py-1 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+            <span class="ml-3 text-xl">Extract Pics</span>
+        </a>
+        <p class="text-sm text-black-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+            B Rohan Rao 
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="ml-3 text-black-500" href="https://www.instagram.com/the.maniaccc/" target="_blank">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+            </a>
+            <a class="ml-3 text-black-500" href="https://www.linkedin.com/in/b-rohan-rao-b082a7245/" target="_blank">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path stroke="none"
+                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                    </path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+            </a>
+        </span>
+    </div>
+    </footer>
+
+</body>
+</html>
