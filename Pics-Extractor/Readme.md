@@ -7,7 +7,7 @@ An all-in-one, completely responsive django webapp or website for extracting or 
 Install Pic Extractor
 
 ```bash
-  git clone https://github.com/ASACHIT/Pics-Extractor.git
+  git clone https://github.com/rohanlearn/scrapethenet.git
   cd Pics-Extractor
   pip install -r requirements.txt
 ```
@@ -18,13 +18,6 @@ Install Pic Extractor
   python manage.py runserver
   # open url localhost:8000
 ```
-
-### With Docker
-
-```
-git clone https://github.com/ASACHIT/Pics-Extractor.git
-cd Pics-Extractor/
-docker-compose up --build
 ```
 
 ## Screenshots
