@@ -15,6 +15,7 @@ Install Pic Extractor
 ## Run the project
 
 ```bash
+  python manage.py migrate
   python manage.py runserver
   # open url localhost:8000
 ```
