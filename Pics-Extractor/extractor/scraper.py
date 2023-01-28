@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup as bs
 from typing import List
 
+import urllib.request
+
 
 class ScrapeImages:
     def __init__(self, url: str) -> None:
@@ -18,6 +20,7 @@ class ScrapeImages:
         urls = []
         filenames_list = []
         file_extension = []
+     
 
         soup = bs(requests.get(self.url).content, "html.parser")
         for img in soup.find_all("img"):
@@ -47,6 +50,10 @@ class ScrapeImages:
 
                 # file extension only like png, jpeg, jpg, svg
                 file_extension.append(full_image_name.split(".")[-1][:10])
+       
+
+        
+
 
         # zipping all list and returning a queryset or object
         all_list = zip(urls, filenames_list, file_extension)

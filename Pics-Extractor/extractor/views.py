@@ -3,6 +3,14 @@ from django.shortcuts import redirect, render
 
 from .scraper import ScrapeImages
 
+import urllib.request
+from django.http import FileResponse
+def download():
+    url = "https://i.pinimg.com/70x/df/b5/7e/dfb57e908aa08c86dba5ab81c1088c44.jpg"
+    file=urllib.request.urlretrieve(url, "image.jpg")
+    return file
+    
+ 
 
 def scrape(request):
 
