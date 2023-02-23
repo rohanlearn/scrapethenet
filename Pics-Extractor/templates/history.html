@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.png' %}">
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="http://fonts.cdnfonts.com/css/euclid-circular-a?styles=100037,100034,100036,100039,100031"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'history.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrapethenet</title>
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script href="{% static 'history.js' %}"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <style>
+        #thot:hover{
+            color: #b1b4b8;
+        }
+       
+    </style>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js" integrity="sha512-BdHyGtczsUoFcEma+MfXc71KJLv/cd+sUsUaYYf2mXpfG/PtBjNXsPo78+rxWjscxUYN2Qr2+DbeGGiJx81ifg==" crossorigin="anonymous"></script>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href='https://fonts.googleapis.com/css?family=Sacramento:400' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+          <a href="" class="logo">Scrapethenet</a>
+          <div class="navigation">
+            <div class="nav-items" >
+              <i class="uil uil-times nav-close-btn"></i>
+              <a href="{% url 'home' %}" id="thot"><i class="uil uil-home"></i> Home</a>
+              <a href="{% url 'help' %}" id="thot"><i class="uil uil-compass"></i> Help?</a>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </div>
+          </div>
+          <i class="uil uil-apps nav-menu-btn"></i>
+        </div>
+      </header>
+    <div class="Warning" >
+        
+        <div class="ag-space">
+            <div class="ag-format-container">
+              <div class="ag-robot_platform">
+                <div class="ag-robot"></div>
+              </div>
+          
+              <div class="ag-planet"></div>
+            </div>
+            <div class="chat">
+                <p class="text-message">  </p>
+                <div class="iam">Hi!!</div>
+                <p class="text"></p>
+              </div>
+          </div>
+
+    </div>
+    <script>
+        var typing=new Typed(".text", {
+            strings: ["", "This is to inform you\n  that this page is \n still under\n construction", "Please come back later :)"],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true,
+        });
+     </script>
+
+</body>
+</html>

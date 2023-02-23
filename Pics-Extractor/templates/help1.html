@@ -1,0 +1,241 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.png' %}">
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="http://fonts.cdnfonts.com/css/euclid-circular-a?styles=100037,100034,100036,100039,100031"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrapethenet</title>
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script>
+        setTimeout(function () {
+            const modal = document.getElementById("error-modal");
+            // hide modal after 3 seconds
+            modal.style.display = "none";
+        }, 3500);
+     
+    </script>
+    
+</head>
+<body>
+     <!-- error popup modal -->
+     {% if messages %}
+     {% for msg in messages %}
+     <div id="error-modal" class="flex animate-pulse w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg
+        fixed left-8 top-8">
+         <div class="flex items-center justify-center w-12 stroke-slate-900">
+             <svg class="w-6 h-6 text-slate-800 fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                 <path
+                     d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
+             </svg>
+         </div>
+ 
+         <div class="px-4 py-2 -mx-3">
+             <div class="mx-3">
+                 <span class="font-semibold text-slate-800 ">Error</span>
+                 <p class="text-sm text-gray-600 ">{{msg}}</p>
+             </div>
+         </div>
+     </div>
+     {% endfor %}
+     {% endif %}
+     <!-- error popup modal -->
+     <style>
+        #thot:hover{
+            color: #b1b4b8;
+        }
+       
+    </style>
+
+  <header>
+    <div class="nav-bar">
+      <a href="" class="logo">Scrapethenet</a>
+      <div class="navigation">
+        <div class="nav-items" >
+          <i class="uil uil-times nav-close-btn"></i>
+          <a href="{% url 'home' %}" id="thot"><i class="uil uil-home"></i> Home</a>
+      <!--    <a href="{% url 'history' %}" id="thot"><i class="uil uil-info-circle"></i> History</a> -->
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+      </div>
+      <i class="uil uil-apps nav-menu-btn"></i>
+    </div>
+  </header>
+
+    
+    <div class="bg-slider-thumbs">
+      <div class="swiper-wrapper thumbs-container">
+        <img src="{% static 'images/new9.jpg' %}" class="swiper-slide" alt="">
+        <img src="{% static 'images/bg2.jpg' %}" class="swiper-slide" alt="">
+        <img src="{% static 'images/bg3.jpg' %}" class="swiper-slide" alt="">
+        <img src="{% static 'images/bg4.jpg' %}" class="swiper-slide" alt="">
+      </div>
+    </div>
+  </section>
+  <div class="flex-1">
+    <h1 class="text-center text-3xl font-semibold" style="color: white; margin-top: 8%;">How Does it Work?</h1>
+    <section class="text-gray-400 body-font">
+        <div class="container px-5  mx-auto flex flex-wrap" style="margin-top: 3%; margin-bottom: 3%;">
+            <div class="flex flex-wrap w-full justify-center">
+                <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6 justify-center">
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider " style="color: white;">STEP 1
+                            </h2>
+                            <p class="leading-relaxed">First, it gets the page url from the frontend, passes to
+                                the backend and checks
+                                whether the url is valid or not.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider" style="color: white;">STEP 2
+                            </h2>
+                            <p class="leading-relaxed">If the URL is found to be valid, it is requested and the
+                                html responses are parsed.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <circle cx="12" cy="5" r="3"></circle>
+                                <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider" style="color: white;">STEP 3
+                            </h2>
+                            <p class="leading-relaxed">It searches for all img> tags in all parsed html
+                                responses, and from all those img tags, it searches for "src" attribute for
+                                links and urls of pictures, and stores it in a list.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider" style="color: white;">STEP 4
+                            </h2>
+                            <p class="leading-relaxed">After that, it uses the split method to find image
+                                formats such as png, jpg, and webp, as well as the names of image files on the
+                                server, which it then stores in a list.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider" style="color: white" >FINISH
+                            </h2>
+                            <p class="leading-relaxed">Everything, including image file names, urls, and
+                                formats, is packed into an object and given to the frontend via the context
+                                manager, where it is rendered using the templating language.</p>
+                        </div>
+                    </div>
+                </div>
+    
+</div>
+</section>
+  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+
+
+  
+
+
+                           
+
+
+</body>
+
+<footer class="text-black-600 body-font" style="background-color: #000000;">
+    <div class="container px-5 py-1 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+            <span class="ml-3 text-xl">Extract Pics</span>
+        </a>
+        <p class="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+            B Rohan Rao 
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a href="https://github.com/rohanlearn/scrapethenet.git" target="_blank">
+            <svg width="24" height="24" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+            </a>
+            
+            <a class="ml-3 text-white" href="https://www.instagram.com/the.maniaccc/" target="_blank">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+            </a>
+            <a class="ml-3 text-white" href="https://www.linkedin.com/in/b-rohan-rao-b082a7245/" target="_blank">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                    <path stroke="none"
+                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                    </path>
+                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+            </a>
+        </span>
+    </div>
+    </footer>
+
+</body>
+</html>
