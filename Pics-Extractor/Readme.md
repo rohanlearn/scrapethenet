@@ -19,5 +19,4 @@ Install Pic Extractor
   python manage.py runserver
   # open url localhost:8000
 ```
-```
 
