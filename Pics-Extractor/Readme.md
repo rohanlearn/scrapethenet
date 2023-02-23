@@ -15,13 +15,9 @@ Install Pic Extractor
 ## Run the project
 
 ```bash
+  python manage.py migrate
   python manage.py runserver
   # open url localhost:8000
 ```
 ```
 
-## Screenshots
-
-![App Screenshot](https://media.discordapp.net/attachments/884460118715019274/938714845384163348/fullpage.png)
-.
-![App Screenshot](https://media.discordapp.net/attachments/884460118715019274/938714845749063700/fullpage2.png)
